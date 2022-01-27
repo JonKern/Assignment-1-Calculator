@@ -1,0 +1,11 @@
+C:\Users\16054\source\repos\Assignment1\Assignment1\bin\Debug\Assignment1.exe.config
+C:\Users\16054\source\repos\Assignment1\Assignment1\bin\Debug\Assignment1.exe
+C:\Users\16054\source\repos\Assignment1\Assignment1\bin\Debug\Assignment1.pdb
+C:\Users\16054\source\repos\Assignment1\Assignment1\obj\Debug\Assignment1_Calculator.csproj.AssemblyReference.cache
+C:\Users\16054\source\repos\Assignment1\Assignment1\obj\Debug\Assignment1_Calculator.csproj.SuggestedBindingRedirects.cache
+C:\Users\16054\source\repos\Assignment1\Assignment1\obj\Debug\Assignment1.Calculator.resources
+C:\Users\16054\source\repos\Assignment1\Assignment1\obj\Debug\Assignment1.Properties.Resources.resources
+C:\Users\16054\source\repos\Assignment1\Assignment1\obj\Debug\Assignment1_Calculator.csproj.GenerateResource.cache
+C:\Users\16054\source\repos\Assignment1\Assignment1\obj\Debug\Assignment1_Calculator.csproj.CoreCompileInputs.cache
+C:\Users\16054\source\repos\Assignment1\Assignment1\obj\Debug\Assignment1.exe
+C:\Users\16054\source\repos\Assignment1\Assignment1\obj\Debug\Assignment1.pdb
