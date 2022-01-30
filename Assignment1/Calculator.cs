@@ -37,7 +37,7 @@ namespace Assignment1
         private void Clear_Click(object sender, EventArgs e)
         {
             NumField.Text = "0";
-            result = 0;
+            result = 0.0;
         }
 
         private void ClearEntry_Click(object sender, EventArgs e)
@@ -234,6 +234,9 @@ namespace Assignment1
                     break;
                 case "=":
                     Equal.PerformClick();
+                    break;
+                case ".":
+                    Decimal.PerformClick();
                     break;
                 case "\b": // Handles the BackSpace key
                     Delete.PerformClick();
