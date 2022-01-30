@@ -12,7 +12,7 @@ namespace Assignment1
 {
     public partial class Calculator : Form
     {
-        double result = 0;
+        double result = 0.0;
         string operations = "";
         bool IsOperation = false;
 
@@ -36,7 +36,6 @@ namespace Assignment1
         {
             NumField.Text = "0";
             result = 0;
-
         }
 
         private void ClearEntry_Click(object sender, EventArgs e)
@@ -46,11 +45,16 @@ namespace Assignment1
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            if (double.Parse(NumField.Text) > 0)
+            if (NumField.TextLength > 0)
             {
                 NumField.Text = NumField.Text.Substring(0, (NumField.TextLength - 1));
+                if (NumField.TextLength == 0)
+                {
+                    NumField.Text = "0";
+                }
             }
         }
+
         private void Square_Click(object sender, EventArgs e)
         {
             NumField.Text = (double.Parse(NumField.Text) * double.Parse(NumField.Text)).ToString();
@@ -117,8 +121,7 @@ namespace Assignment1
                     break;
                 }
                 result = double.Parse(NumField.Text);
-                operations = "";
-            
+                operations = "";            
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -224,33 +227,30 @@ namespace Assignment1
                 case "\n": // Handles the Enter key
                     Equal.PerformClick();
                     break;
+                case "\b": // Handles the BackSpace key (delete)
+                    Delete.PerformClick();
+                    break;
                 default:
                     return;
             }
         }
-        private void History_Click(object sender, EventArgs e)
-        {
 
-        }
         private void NumsSymbs_MouseEnter(object sender, EventArgs e)
         {
             Button CalcButtons = (Button)sender;
-
             CalcButtons.BackColor = Color.FromArgb(155, 155, 155);
         }
 
         private void Equals_MouseEnter(object sender, EventArgs e)
         {
             Button CalcButtons = (Button)sender;
-
             CalcButtons.BackColor = Color.FromArgb(89, 111, 255);
         }
 
         private void Clear_MouseEnter(object sender, EventArgs e)
         {
             Button CalcButtons = (Button)sender;
-
-            CalcButtons.BackColor = Color.FromArgb(255, 178, 102); ;
+            CalcButtons.BackColor = Color.FromArgb(255, 178, 102);
         }
 
         private void Nums_MouseLeave(object sender, EventArgs e)
