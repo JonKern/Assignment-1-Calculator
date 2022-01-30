@@ -25,12 +25,14 @@ namespace Assignment1
         {
             KeyPreview = true;
             this.ActiveControl = NumField;
+            NumField.SelectionStart = NumField.Text.Length;
         }
 
         private void NumField_TextChanged(object sender, EventArgs e)
         {
             
         }
+
 
         private void Clear_Click(object sender, EventArgs e)
         {
@@ -52,6 +54,7 @@ namespace Assignment1
                 {
                     NumField.Text = "0";
                 }
+                NumField.SelectionStart = NumField.Text.Length;
             }
         }
 
@@ -62,7 +65,7 @@ namespace Assignment1
 
         private void SquareRoot_Click(object sender, EventArgs e)
         {
-            if (double.Parse(NumField.Text) >= 0)
+            if (double.Parse(NumField.Text) >= 0.0)
             {
                 NumField.Text = Math.Sqrt(double.Parse(NumField.Text)).ToString();
             }
@@ -78,7 +81,7 @@ namespace Assignment1
        
         private void ChangeSign_Click(object sender, EventArgs e)
         {
-            if (NumField.Text != "0")
+            if (double.Parse(NumField.Text) != 0.0)
             {
                 if (NumField.Text.Contains("-"))
                 {
@@ -93,35 +96,41 @@ namespace Assignment1
 
         private void Equal_Click(object sender, EventArgs e)
         {
-            switch (operations)
+            bool IsDouble = double.TryParse(NumField.Text, out double doubleValue); // prevents consecutive operation attempts
+
+            if (IsDouble)
+            {
+                switch (operations)
                 {
-                 case "/":
-                    if (double.Parse(NumField.Text) != 0)
-                    {
-                        NumField.Text = (result / double.Parse(NumField.Text)).ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cannot divide by 0.");
-                    }
-                    break;
-                case "*":
-                    NumField.Text = (result * double.Parse(NumField.Text)).ToString();
-                    break;
-                case "-":
-                    NumField.Text = (result - double.Parse(NumField.Text)).ToString();
-                    break;
-                case "+":
-                    NumField.Text = (result + double.Parse(NumField.Text)).ToString();
-                    break;
-                case "xʸ":
-                    NumField.Text = Math.Pow(result, double.Parse(NumField.Text)).ToString();
-                    break;
-                default:
-                    break;
+                    case "/":
+                        if (double.Parse(NumField.Text) != 0.0)
+                        {
+                            NumField.Text = (result / double.Parse(NumField.Text)).ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot divide by 0.");
+                        }
+                        break;
+                    case "*":
+                        NumField.Text = (result * double.Parse(NumField.Text)).ToString();
+                        break;
+                    case "-":
+                        NumField.Text = (result - double.Parse(NumField.Text)).ToString();
+                        break;
+                    case "+":
+                        NumField.Text = (result + double.Parse(NumField.Text)).ToString();
+                        break;
+                    case "xʸ":
+                        NumField.Text = Math.Pow(result, double.Parse(NumField.Text)).ToString();
+                        break;
+                    default:
+                        break;
                 }
                 result = double.Parse(NumField.Text);
-                operations = "";            
+                operations = "";
+                NumField.SelectionStart = NumField.Text.Length;
+            }
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -146,6 +155,7 @@ namespace Assignment1
                 NumField.Text += CalcButtons.Text;
             }
             this.ActiveControl = NumField;
+            NumField.SelectionStart = NumField.Text.Length;
             NumField.SelectionLength = 0;
         }
 
@@ -168,6 +178,7 @@ namespace Assignment1
                 NumField.Text = result + " " + operations;
             }
             this.ActiveControl = NumField;
+            NumField.SelectionStart = NumField.Text.Length;
             NumField.SelectionLength = 0;
         }
 
@@ -224,10 +235,7 @@ namespace Assignment1
                 case "=":
                     Equal.PerformClick();
                     break;
-                case "\n": // Handles the Enter key
-                    Equal.PerformClick();
-                    break;
-                case "\b": // Handles the BackSpace key (delete)
+                case "\b": // Handles the BackSpace key
                     Delete.PerformClick();
                     break;
                 default:
