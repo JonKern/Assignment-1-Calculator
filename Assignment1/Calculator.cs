@@ -24,15 +24,15 @@ namespace Assignment1
         private void Form1_Load(object sender, EventArgs e)
         {
             KeyPreview = true;
-            this.ActiveControl = NumField;
-            NumField.SelectionStart = NumField.Text.Length;
+            this.AcceptButton = Equal; // Makes the Equal button be activated when Enter is pressed
+            this.ActiveControl = NumField; // Puts focus on NumField
+            NumField.SelectionStart = NumField.Text.Length; // Puts caret at end of NumField            
         }
 
         private void NumField_TextChanged(object sender, EventArgs e)
         {
             
         }
-
 
         private void Clear_Click(object sender, EventArgs e)
         {
@@ -54,7 +54,7 @@ namespace Assignment1
                 {
                     NumField.Text = "0";
                 }
-                NumField.SelectionStart = NumField.Text.Length;
+                NumField.SelectionStart = NumField.Text.Length; // Puts caret at end of NumField
             }
         }
 
@@ -71,7 +71,7 @@ namespace Assignment1
             }
             else
             {
-                MessageBox.Show("The square root of a negative real number is imaginary.");
+                MessageBox.Show("Cannot evaluate imaginary numbers.");
             }
         }
         private void Inverse_Click(object sender, EventArgs e)
@@ -81,7 +81,7 @@ namespace Assignment1
        
         private void ChangeSign_Click(object sender, EventArgs e)
         {
-            if (double.Parse(NumField.Text) != 0.0)
+            if (double.Parse(NumField.Text) != 0.0) // Prevents 0 from having a - sign
             {
                 if (NumField.Text.Contains("-"))
                 {
@@ -129,7 +129,7 @@ namespace Assignment1
                 }
                 result = double.Parse(NumField.Text);
                 operations = "";
-                NumField.SelectionStart = NumField.Text.Length;
+                NumField.SelectionStart = NumField.Text.Length; // Puts caret at end of NumField
             }
         }
 
@@ -154,32 +154,51 @@ namespace Assignment1
             {
                 NumField.Text += CalcButtons.Text;
             }
-            this.ActiveControl = NumField;
-            NumField.SelectionStart = NumField.Text.Length;
-            NumField.SelectionLength = 0;
+            this.ActiveControl = NumField; // Puts focus on NumField
+            NumField.SelectionStart = NumField.Text.Length; // Puts caret at end of NumField            
         }
 
         private void Operator_Click(object sender, EventArgs e)
         {
             Button CalcButtons = (Button)sender;
 
-            if (result != 0)
+            if (result != 0) // user can do multiple operations and see current total without hitting eqals every time
+                             // Example: "1 + 1". NumField will display "2". User can then press "+ 1" and NumField
+                             // will now display "3".
             {
                 Equal.PerformClick();
                 IsOperation = true;
-                operations = CalcButtons.Text;
-                NumField.Text = result + " " + operations;
+
+                if (CalcButtons.Text == RaiseToPow.Text) // The text for RaiseToPow is xʸ, so this changes the
+                {                                        // character used in the NumField to ^ instead
+                    operations = CalcButtons.Text;
+                    NumField.Text = result + " " + "^";
+                } else 
+                {
+                    operations = CalcButtons.Text;
+                    NumField.Text = result + " " + operations;
+                }
+                
             }
             else
             {
                 operations = CalcButtons.Text;
-                result = double.Parse(NumField.Text);
-                IsOperation = true;
-                NumField.Text = result + " " + operations;
+
+                if (CalcButtons.Text == RaiseToPow.Text) // The text for RaiseToPow is xʸ, so this changes the
+                {                                        // character used in the NumField to ^ instead
+                    result = double.Parse(NumField.Text);
+                    IsOperation = true;
+                    NumField.Text = result + " " + "^";
+                }
+                else
+                {
+                    result = double.Parse(NumField.Text);
+                    IsOperation = true;
+                    NumField.Text = result + " " + operations;
+                }                
             }
-            this.ActiveControl = NumField;
-            NumField.SelectionStart = NumField.Text.Length;
-            NumField.SelectionLength = 0;
+            this.ActiveControl = NumField; // Puts focus on NumField
+            NumField.SelectionStart = NumField.Text.Length; // Puts caret at end of NumField
         }
 
         private void Calculator_KeyPress(object sender, KeyPressEventArgs e)
@@ -232,7 +251,7 @@ namespace Assignment1
                 case "+":
                     Add.PerformClick();
                     break;
-                case "=":
+                case "=":  // See method Form1_Load regarding how to handle the Enter key being used
                     Equal.PerformClick();
                     break;
                 case ".":
@@ -241,8 +260,11 @@ namespace Assignment1
                 case "\b": // Handles the BackSpace key
                     Delete.PerformClick();
                     break;
+                case "^":
+                    RaiseToPow.PerformClick();
+                    break;
                 default:
-                    return;
+                    return;                
             }
         }
 
@@ -276,16 +298,16 @@ namespace Assignment1
             CalcButtons.BackColor = Color.FromArgb(72, 72, 72);
         }
 
-        private void Clear_MouseLeave(object sender, EventArgs e)
-        {
-            Button CalcButtons = (Button)sender;
-            CalcButtons.BackColor = Color.FromArgb(231, 125, 20);
-        }
-
         private void Equals_MouseLeave(object sender, EventArgs e)
         {
             Button CalcButtons = (Button)sender;
             CalcButtons.BackColor = Color.FromArgb(71, 102, 137);
+        }
+
+        private void Clear_MouseLeave(object sender, EventArgs e)
+        {
+            Button CalcButtons = (Button)sender;
+            CalcButtons.BackColor = Color.FromArgb(231, 125, 20);
         }
     }
 }

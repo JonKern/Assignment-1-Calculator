@@ -52,7 +52,7 @@
             this.Equal = new System.Windows.Forms.Button();
             this.Num1 = new System.Windows.Forms.Button();
             this.Num2 = new System.Windows.Forms.Button();
-            this.SquareByY = new System.Windows.Forms.Button();
+            this.RaiseToPow = new System.Windows.Forms.Button();
             this.SquareRoot = new System.Windows.Forms.Button();
             this.NumField = new System.Windows.Forms.TextBox();
             this.HistoryToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -410,22 +410,22 @@
             this.Num2.MouseEnter += new System.EventHandler(this.NumsSymbs_MouseEnter);
             this.Num2.MouseLeave += new System.EventHandler(this.Nums_MouseLeave);
             // 
-            // SquareByY
+            // RaiseToPow
             // 
-            this.SquareByY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(72)))));
-            this.SquareByY.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SquareByY.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SquareByY.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.SquareByY.Location = new System.Drawing.Point(69, 98);
-            this.SquareByY.Name = "SquareByY";
-            this.SquareByY.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SquareByY.Size = new System.Drawing.Size(51, 34);
-            this.SquareByY.TabIndex = 27;
-            this.SquareByY.Text = "xʸ";
-            this.SquareByY.UseVisualStyleBackColor = false;
-            this.SquareByY.Click += new System.EventHandler(this.Operator_Click);
-            this.SquareByY.MouseEnter += new System.EventHandler(this.NumsSymbs_MouseEnter);
-            this.SquareByY.MouseLeave += new System.EventHandler(this.Symbols_MouseLeave);
+            this.RaiseToPow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(72)))));
+            this.RaiseToPow.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.RaiseToPow.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RaiseToPow.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.RaiseToPow.Location = new System.Drawing.Point(69, 98);
+            this.RaiseToPow.Name = "RaiseToPow";
+            this.RaiseToPow.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.RaiseToPow.Size = new System.Drawing.Size(51, 34);
+            this.RaiseToPow.TabIndex = 27;
+            this.RaiseToPow.Text = "xʸ";
+            this.RaiseToPow.UseVisualStyleBackColor = false;
+            this.RaiseToPow.Click += new System.EventHandler(this.Operator_Click);
+            this.RaiseToPow.MouseEnter += new System.EventHandler(this.NumsSymbs_MouseEnter);
+            this.RaiseToPow.MouseLeave += new System.EventHandler(this.Symbols_MouseLeave);
             // 
             // SquareRoot
             // 
@@ -468,7 +468,7 @@
             this.ClientSize = new System.Drawing.Size(246, 321);
             this.Controls.Add(this.NumField);
             this.Controls.Add(this.SquareRoot);
-            this.Controls.Add(this.SquareByY);
+            this.Controls.Add(this.RaiseToPow);
             this.Controls.Add(this.Num2);
             this.Controls.Add(this.Num1);
             this.Controls.Add(this.Equal);
@@ -526,7 +526,7 @@
         private System.Windows.Forms.Button Equal;
         private System.Windows.Forms.Button Num1;
         private System.Windows.Forms.Button Num2;
-        private System.Windows.Forms.Button SquareByY;
+        private System.Windows.Forms.Button RaiseToPow;
         private System.Windows.Forms.Button SquareRoot;
         private System.Windows.Forms.TextBox NumField;
         private System.Windows.Forms.ToolTip HistoryToolTip;
